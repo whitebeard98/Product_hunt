@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 def home(request):
-    return render(request,'products/home.html')
+    product=Products.objects
+    return render(request,'products/home.html',{'product':product})
 
 @login_required(login_url="/accounts/signup")
 def add(request):
@@ -32,4 +33,12 @@ def add(request):
 def detail(request,product_id):
     product=get_object_or_404(Products, pk=product_id)
     return render(request, 'products/detail.html', {'product':product})
+    
+@login_required
+def upvote(request,product_id):
+    if request.method=="POST":
+        product=get_object_or_404(Products,pk=product_id)
+        product.upvote+=1
+        product.save()
+        return redirect('/products/' + str(product.id))
     
