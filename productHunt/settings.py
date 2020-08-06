@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'products.apps.ProductsConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'productHunt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['productHunt/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,6 +115,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+
 USE_L10N = True
 
 USE_TZ = True
@@ -121,4 +124,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"productHunt/static/"),
+    ]
+
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
+
 STATIC_URL = '/static/'
+
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+MEDIA_URL = '/media/'
