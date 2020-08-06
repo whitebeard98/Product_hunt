@@ -53,7 +53,7 @@
         <form id="logout" method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
             <input type="hidden" />
-        </ form>
+        </form>
     {% else %}
       <a class="nav-item nav-link" href="{% url 'signup' %}">Signup</a>
       <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>

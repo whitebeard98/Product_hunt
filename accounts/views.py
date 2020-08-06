@@ -17,7 +17,8 @@ def signup(request):
         else:
             #password doesn't match
             return render(request,'accounts/signup.html', {'error':'error-> passwords must match'})
-    return render(request,('accounts/signup.html'))
+    else:
+        return render(request,('accounts/signup.html'))
 
 def login(request):
     if request.method=="POST":
@@ -27,7 +28,8 @@ def login(request):
             return redirect('home')
         else:
             return render(request,'accounts/login.html',{'error':'error->Username or password is incorrect'})
-    return render(request,('accounts/login.html'))
+    else:
+        return render(request,('accounts/login.html'))
 
 def logout(request):
     print('why are you loging out lah')

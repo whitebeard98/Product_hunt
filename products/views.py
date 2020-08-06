@@ -26,9 +26,9 @@ def add(request):
             product.save()
             return redirect('/products/'+str(product.id))
         else:
-            return render(request,'products/add.html',{'error','error->All feilds must be field'})
-        
-    return render(request, 'products/add.html')
+            return render(request,'products/add.html',{'error':'error->All feilds must be field'})
+    else:
+        return render(request, 'products/add.html')
 
 def detail(request,product_id):
     product=get_object_or_404(Products, pk=product_id)
